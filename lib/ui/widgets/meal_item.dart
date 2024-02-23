@@ -1,9 +1,11 @@
+import 'package:favorcate/core/viewmodel/favor_view_model.dart';
 import 'package:favorcate/ui/pages/detail/detail_screen.dart';
 import 'package:favorcate/ui/widgets/operation_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:favorcate/core/model/meal_model.dart';
+import 'package:provider/provider.dart';
 
 class MealItem extends StatelessWidget {
   final cardRedius = 12.0;
@@ -28,7 +30,8 @@ class MealItem extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.of(context).pushNamed(DetailScreen.routerName, arguments: _meal);
+        Navigator.of(context)
+            .pushNamed(DetailScreen.routerName, arguments: _meal);
       },
     );
   }
@@ -58,7 +61,13 @@ class MealItem extends StatelessWidget {
               color: Colors.black54,
               borderRadius: BorderRadius.circular(6),
             ),
-            child: Text(_meal.title!, style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.white),),
+            child: Text(
+              _meal.title!,
+              style: Theme.of(context)
+                  .textTheme
+                  .displaySmall!
+                  .copyWith(color: Colors.white),
+            ),
           ),
         )
       ],
@@ -73,9 +82,34 @@ class MealItem extends StatelessWidget {
         children: [
           OperationItem(Icon(Icons.schedule), "${_meal.duration}分钟"),
           OperationItem(Icon(Icons.restaurant), "${_meal.complexStr}"),
-          OperationItem(Icon(Icons.favorite), "未收藏"),
+          buildFavorItem(),
         ],
       ),
+    );
+  }
+
+  Widget buildFavorItem() {
+    return Consumer<FavorViewModel>(
+      builder: (context, favorVM, child) {
+        final iconData =
+            favorVM.isFavor(_meal) ? Icons.favorite : Icons.favorite_border;
+        final favorColor = favorVM.isFavor(_meal) ? Colors.red : Colors.black;
+        final title = favorVM.isFavor(_meal) ? "收藏" : "未收藏";
+
+        return GestureDetector(
+          onTap: () {
+            favorVM.handleMeal(_meal);
+          },
+          child: OperationItem(
+            Icon(
+              iconData,
+              color: favorColor,
+            ),
+            title,
+            textColor: favorColor,
+          ),
+        );
+      },
     );
   }
 }

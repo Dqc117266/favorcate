@@ -1,5 +1,7 @@
+import 'package:favorcate/ui/pages/home/homde_drawer.dart';
 import 'package:flutter/material.dart';
 
+import 'home_app_bar.dart';
 import 'home_content.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,9 +10,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("美食广场"),),
+      appBar: HomeAppBar(context),
       body: HomeConetnt(),
+      drawer: HomeDrawer(),
     );
   }
 }
-

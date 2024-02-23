@@ -1,8 +1,11 @@
 
 
 import 'package:favorcate/core/model/meal_model.dart';
+import 'package:favorcate/core/viewmodel/favor_view_model.dart';
 import 'package:favorcate/ui/pages/detail/detail_content.dart';
 import 'package:flutter/material.dart';
+
+import 'detail_floating_button.dart';
 
 class DetailScreen extends StatelessWidget {
   static final String routerName = "/detail";
@@ -16,11 +19,7 @@ class DetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(meal.title!),),
       body: DetailContent(meal),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-        },
-        child: Icon(Icons.favorite_border),
-      ),
+      floatingActionButton:  DetailFloatingButton(meal: meal),
     );
   }
 }

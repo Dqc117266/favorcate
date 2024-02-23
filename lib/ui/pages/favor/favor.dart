@@ -1,3 +1,4 @@
+import 'package:favorcate/ui/pages/favor/favor_content.dart';
 import 'package:flutter/material.dart';
 
 class FavorScreen extends StatelessWidget {
@@ -7,9 +8,7 @@ class FavorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("我的收藏"),),
-      body: Text(
-        "我的收藏",
-      ),
+      body: FavorContent(),
     );
   }
 }

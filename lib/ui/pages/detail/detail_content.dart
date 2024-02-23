@@ -22,7 +22,7 @@ class DetailContent extends StatelessWidget {
   }
 
   Widget buildBannerImage() {
-    return Image.network(_meal.imageUrl!);
+    return Container(width: double.infinity, child: Image.network(_meal.imageUrl!));
   }
 
   Widget buildMakeMaterial(BuildContext context) {

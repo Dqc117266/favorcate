@@ -1,4 +1,5 @@
 import 'package:favorcate/core/router/router.dart';
+import 'package:favorcate/core/viewmodel/favor_view_model.dart';
 import 'package:favorcate/core/viewmodel/meal_view_model.dart';
 import 'package:favorcate/ui/shared/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +7,11 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => MealViewModel(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => MealViewModel(),),
+        ChangeNotifierProvider(create: (context) => FavorViewModel(),),
+      ],
       child: MyApp(),
     ),
   );
