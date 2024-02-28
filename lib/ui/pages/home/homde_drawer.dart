@@ -1,3 +1,4 @@
+import 'package:favorcate/ui/pages/filter/filter.dart';
 import 'package:flutter/material.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -15,7 +16,7 @@ class HomeDrawer extends StatelessWidget {
               Navigator.of(context).pop();
             }),
             buildListTile(context, Icon(Icons.settings), "过滤", () {
-
+              Navigator.of(context).pushNamed(FilterScreen.routeName);
             }),
           ],
         ),

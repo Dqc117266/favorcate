@@ -1,19 +1,13 @@
 
-import 'package:favorcate/core/model/meal_model.dart';
 import 'package:favorcate/core/services/json_parse.dart';
-import 'package:flutter/cupertino.dart';
 
-class MealViewModel extends ChangeNotifier {
-  List<MealModel> _meals = [];
+import 'base_view_model.dart';
 
-  List<MealModel> get meals {
-    return _meals;
-  }
+class MealViewModel extends BaseMealViewModel {
 
   MealViewModel() {
     JsonParse.getMealModelData().then((value) {
-      _meals = value;
-      notifyListeners();
+      meals = value;
     });
   }
 }

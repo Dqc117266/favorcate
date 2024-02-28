@@ -1,3 +1,4 @@
+import 'package:favorcate/ui/pages/home/homde_drawer.dart';
 import 'package:favorcate/ui/pages/main/initalize_items.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: HomeDrawer(),
       body: IndexedStack(
         index: _currentIndex,
         children: pages,

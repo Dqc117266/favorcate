@@ -12,7 +12,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: HomeAppBar(context),
       body: HomeConetnt(),
-      drawer: HomeDrawer(),
     );
   }
 }
